@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 인증</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 스타일링 파일 (선택사항) -->
+</head>
+<body>
+<h1>회원 인증</h1>
+
+<!-- 회원가입 폼 -->
+<section id="signup">
+    <h2>회원가입</h2>
+    <form id="signupForm">
+        <label for="username">아이디:</label>
+        <input type="text" id="username" required>
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" required>
+        <button type="submit">회원가입</button>
+    </form>
+    <div id="signupMessage"></div>
+</section>
+
+<!-- 로그인 폼 -->
+<section id="login">
+    <h2>로그인</h2>
+    <form id="loginForm">
+        <label for="loginUsername">아이디:</label>
+        <input type="text" id="loginUsername" required>
+        <label for="loginPassword">비밀번호:</label>
+        <input type="password" id="loginPassword" required>
+        <button type="submit">로그인</button>
+    </form>
+    <div id="loginMessage"></div>
+</section>
+
+<!-- 내 정보 보기 -->
+<section id="myInfo">
+    <h2>내 정보</h2>
+    <button id="fetchMyInfo">내 정보 조회</button>
+    <div id="myInfoData"></div>
+</section>
+
+<!-- 로그아웃 버튼 -->
+<section id="logout">
+    <h2>로그아웃</h2>
+    <button id="logoutButton">로그아웃</button>
+    <div id="logoutMessage"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
