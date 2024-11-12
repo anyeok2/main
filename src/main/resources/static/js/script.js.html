@@ -1,0 +1,75 @@
+// 회원가입 처리
+document.getElementById('signupForm').addEventListener('submit', function(event) {
+event.preventDefault();  // 기본 폼 제출 동작 막기
+
+const username = document.getElementById('username').value;
+const password = document.getElementById('password').value;
+
+fetch('/api/v1/members/join', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify({ username, password })
+})
+.then(response => response.json())
+.then(data => {
+document.getElementById('signupMessage').innerText = data.message || "회원가입이 완료되었습니다.";
+})
+.catch(error => {
+document.getElementById('signupMessage').innerText = "회원가입 중 오류가 발생했습니다.";
+});
+});
+
+// 로그인 처리
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+event.preventDefault();  // 기본 폼 제출 동작 막기
+
+const username = document.getElementById('loginUsername').value;
+const password = document.getElementById('loginPassword').value;
+
+fetch('/api/v1/members/login', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json',
+},
+body: JSON.stringify({ username, password })
+})
+.then(response => response.json())
+.then(data => {
+document.getElementById('loginMessage').innerText = data.message || "로그인 성공!";
+})
+.catch(error => {
+document.getElementById('loginMessage').innerText = "로그인 중 오류가 발생했습니다.";
+});
+});
+
+// 내 정보 조회 처리
+document.getElementById('fetchMyInfo').addEventListener('click', function() {
+fetch('/api/v1/members/me', {
+method: 'GET',
+credentials: 'include'  // 쿠키 포함
+})
+.then(response => response.json())
+.then(data => {
+document.getElementById('myInfoData').innerText = JSON.stringify(data, null, 2);
+})
+.catch(error => {
+document.getElementById('myInfoData').innerText = "내 정보 조회 중 오류가 발생했습니다.";
+});
+});
+
+// 로그아웃 처리
+document.getElementById('logoutButton').addEventListener('click', function() {
+fetch('/api/v1/members/logout', {
+method: 'GET',
+credentials: 'include'  // 쿠키 포함
+})
+.then(response => response.json())
+.then(data => {
+document.getElementById('logoutMessage').innerText = data.message || "로그아웃 성공!";
+})
+.catch(error => {
+document.getElementById('logoutMessage').innerText = "로그아웃 중 오류가 발생했습니다.";
+});
+});
